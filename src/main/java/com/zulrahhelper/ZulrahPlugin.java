@@ -178,7 +178,7 @@ public class ZulrahPlugin extends Plugin
 	@Subscribe
 	private void onConfigChanged(ConfigChanged event)
 	{
-		if (event.getGroup().equalsIgnoreCase("znzulrah"))
+		if (event.getGroup().equalsIgnoreCase("ZulrahConfig"))
 		{
 			switch (event.getKey())
 			{
