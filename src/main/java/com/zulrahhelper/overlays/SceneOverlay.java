@@ -227,14 +227,17 @@ public class SceneOverlay extends Overlay
 	{
 		if (localPoint != null && !Strings.isNullOrEmpty(text))
 		{
-			Point textLocation = Perspective.getCanvasTextLocation(client, graphics, localPoint, text, 0);
-			Point txtLoc = new Point(textLocation.getX(), textLocation.getY() - offset);
-			Color color2 = new Color(color.getRed(), color.getGreen(), color.getBlue());
-			ZulrahConfig config = this.config;
-			Objects.requireNonNull(config);
-			OverlayUtils.renderTextLocation(graphics, txtLoc, text, color2, config::textOutline);
 			Polygon tilePoly = Perspective.getCanvasTilePoly(client, localPoint);
 			OverlayUtils.renderPolygon(graphics, tilePoly, color, this.config.outlineWidth(), this.config.fillAlpha());
+			Point textLocation = Perspective.getCanvasTextLocation(client, graphics, localPoint, text, 0);
+			if (textLocation != null)
+			{
+				Point txtLoc = new Point(textLocation.getX(), textLocation.getY() - offset);
+				Color color2 = new Color(color.getRed(), color.getGreen(), color.getBlue());
+				ZulrahConfig config = this.config;
+				Objects.requireNonNull(config);
+				OverlayUtils.renderTextLocation(graphics, txtLoc, text, color2, config::textOutline);
+			}
 		}
 	}
 
