@@ -21,7 +21,7 @@ public enum ZulrahLocation
 	{
 		for (final ZulrahLocation loc : values())
 		{
-			if (loc.toLocalPoint().equals(localPoint))
+			if (loc.localX == localPoint.getX() && loc.localY == localPoint.getY())
 			{
 				return loc;
 			}
